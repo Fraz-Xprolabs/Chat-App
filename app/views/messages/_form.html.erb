@@ -1,0 +1,11 @@
+<%= form_with model: message, data: { turbo_frame: "new_message" } do |f| %>
+  <div>
+    <%= f.text_field :username, placeholder: "Your name", class: "border p-2 w-full" %>
+  </div>
+  <div class="mt-2">
+    <%= f.text_area :content, placeholder: "Type a message", class: "border p-2 w-full" %>
+  </div>
+  <div class="mt-2">
+    <%= f.submit "Send", class: "bg-blue-500 text-white px-4 py-2" %>
+  </div>
+<% end %>

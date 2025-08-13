@@ -1,0 +1,10 @@
+<h1 class="text-2xl font-bold mb-4">Hotwire Chat</h1>
+
+<%= turbo_frame_tag "new_message" do %>
+  <%= render "form", message: @message %>
+<% end %>
+
+<%= turbo_frame_tag "messages", data: { controller: "autoscroll" }, style: "height: 300px; overflow-y: auto;" do %>
+  <%= render @messages %>
+<% end %>
+
