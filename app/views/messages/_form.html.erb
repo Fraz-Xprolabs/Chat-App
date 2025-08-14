@@ -1,11 +1,14 @@
-<%= form_with model: message, data: { turbo_frame: "new_message" } do |f| %>
+<%= form_with model: message, data: { turbo_frame: dom_id(message) } do |f| %>
   <div>
-    <%= f.text_field :username, placeholder: "Your name", class: "border p-2 w-full" %>
+    <%= f.text_field :username, placeholder: "Your name", class: "border p-2 w-full rounded" %>
   </div>
   <div class="mt-2">
-    <%= f.text_area :content, placeholder: "Type a message", class: "border p-2 w-full" %>
+    <%= f.text_area :content, placeholder: "Type a message", class: "border p-2 w-full rounded" %>
   </div>
   <div class="mt-2">
-    <%= f.submit "Send", class: "bg-blue-500 text-white px-4 py-2" %>
+    <%= f.submit message.persisted? ? "Update" : "Send", class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
+    <% if message.persisted? %>
+      <%= link_to "Cancel", messages_path, class: "ml-2 text-gray-600 hover:underline" %>
+    <% end %>
   </div>
 <% end %>

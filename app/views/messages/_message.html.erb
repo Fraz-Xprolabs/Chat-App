@@ -1,4 +1,9 @@
-<div class="p-2 border-b">
-  <strong><%= message.username %>:</strong>
-  <%= message.content %>
-</div>
+<%= turbo_frame_tag dom_id(message) do %>
+  <div class="border p-2 mb-2 rounded bg-gray-50">
+    <strong><%= message.username %>:</strong> <%= message.content %>
+    <div class="mt-1 text-sm text-gray-500">
+      <%= link_to "Edit", edit_message_path(message), data: { turbo_frame: dom_id(message) }, class: "text-blue-500 hover:underline" %> |
+      <%= link_to "Delete", message, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-red-500 hover:underline" %>
+    </div>
+  </div>
+<% end %>
