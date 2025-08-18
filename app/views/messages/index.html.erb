@@ -4,7 +4,9 @@
   <%= render "form", message: @message %>
 <% end %>
 
-<%= turbo_frame_tag "messages", data: { controller: "autoscroll" }, style: "height: 300px; overflow-y: auto;" do %>
+<%= turbo_frame_tag "messages", 
+    data: { controller: "autoscroll" }, 
+    class: "h-[300px] overflow-y-auto" do %>
   <% @messages.each do |message| %>
     <%= turbo_frame_tag dom_id(message) do %>
       <%= render message %>

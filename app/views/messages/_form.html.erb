@@ -8,7 +8,7 @@
   <div class="mt-2">
     <%= f.submit message.persisted? ? "Update" : "Send", class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
     <% if message.persisted? %>
-      <%= link_to "Cancel", messages_path, class: "ml-2 text-gray-600 hover:underline" %>
+      <%= link_to "Save", messages_path, class: "ml-2 text-gray-600 hover:underline" %>
     <% end %>
   </div>
 <% end %>
