@@ -1,4 +1,4 @@
-<%= turbo_stream.append "messages" do %>
+<%= turbo_stream.prepend "messages" do %>
   <%= render @message %>
 <% end %>
 

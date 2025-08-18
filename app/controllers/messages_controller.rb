@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :set_message, only: %i[edit update destroy]
 
   def index
-    @messages = Message.order(created_at: :asc)
+    @messages = Message.order(created_at: :desc).page(params[:page]).per(5)
     @message = Message.new
   end
 
@@ -10,7 +10,9 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     if @message.save
       respond_to do |format|
-        format.turbo_stream
+        format.turbo_stream do
+          @messages = Message.order(created_at: :desc).page(1).per(5)
+        end
       end                     
     else
       render :index, status: :unprocessable_entity
@@ -39,6 +41,8 @@ class MessagesController < ApplicationController
 
   def destroy
     @message.destroy
+    page = params[:page] || 1
+    @messages = Message.page(page).per(5)
     respond_to do |format|
       format.turbo_stream
       format.html { redirect_to root_path }

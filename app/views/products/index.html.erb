@@ -9,6 +9,15 @@
     <h1 class="font-bold text-4xl">Products</h1>
     <%= link_to "New product", new_product_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
   </div>
+  
+   <div class="my-5">
+    <%= search_form_for @q, url: products_path, method: :get, class: "flex space-x-2" do |f| %>
+      <%= f.search_field :name_cont, placeholder: "Search by name...", class: "border rounded px-3 py-2" %>
+      <%= f.number_field :price_gteq, placeholder: "Min Price", class: "border rounded px-3 py-2" %>
+      <%= f.number_field :price_lteq, placeholder: "Max Price", class: "border rounded px-3 py-2" %>
+      <%= f.submit "Filter", class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium" %>
+    <% end %>
+  </div>
 
   <div id="products" class="min-w-full divide-y divide-gray-200 space-y-5">
     <% if @products.any? %>
@@ -25,5 +34,9 @@
     <% else %>
       <p class="text-center my-10">No products found.</p>
     <% end %>
+  </div>
+  
+  <div class="mt-4">
+    <%= paginate @products %>
   </div>
 </div>
