@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "messages#index"
   resources :messages
+  require "sidekiq/web"
+  mount Sidekiq::Web => "/sidekiq"
 end
