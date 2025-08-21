@@ -1,0 +1,4 @@
+<h1>Hey <%= @user.email %> 👋</h1>
+<p>We’ve added a new product: <strong><%= @product.name %></strong></p>
+<p>Price: <%= number_to_currency(@product.price) %></p>
+<p><%= link_to "View Product", product_url(@product) %></p>

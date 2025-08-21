@@ -112,6 +112,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.6.2)
     dotenv (3.1.8)
     drb (2.2.3)
     ed25519 (1.4.0)
@@ -295,6 +296,8 @@ GEM
     rdoc (6.14.2)
       erb
       psych (>= 4.0.0)
+    redis-client (0.25.2)
+      connection_pool
     regexp_parser (2.11.2)
     reline (0.6.2)
       io-console (~> 0.5)
@@ -302,6 +305,23 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.4.1)
+    rspec-core (3.13.5)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.5)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.5)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-rails (8.0.2)
+      actionpack (>= 7.2)
+      activesupport (>= 7.2)
+      railties (>= 7.2)
+      rspec-core (~> 3.13)
+      rspec-expectations (~> 3.13)
+      rspec-mocks (~> 3.13)
+      rspec-support (~> 3.13)
+    rspec-support (3.13.5)
     rubocop (1.79.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -339,6 +359,12 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
+    sidekiq (8.0.7)
+      connection_pool (>= 2.5.0)
+      json (>= 2.9.0)
+      logger (>= 1.6.2)
+      rack (>= 3.1.0)
+      redis-client (>= 0.23.2)
     solid_cable (3.0.11)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -437,8 +463,10 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.0.2)
   ransack
+  rspec-rails (~> 8.0)
   rubocop-rails-omakase
   selenium-webdriver
+  sidekiq
   solid_cable
   solid_cache
   solid_queue
